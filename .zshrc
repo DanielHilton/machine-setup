@@ -33,4 +33,5 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 zplug load
 
-GOPATH=/Users/danielhilton/Code/go
+export GOPATH=/Users/danielhilton/Code/go
+
