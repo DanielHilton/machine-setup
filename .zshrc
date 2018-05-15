@@ -20,8 +20,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias fucking=sudo
 alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
+alias code="cd ~/Code"
+
 . ~/.oh-my-zsh/plugins/z/z.sh
 
 
@@ -34,4 +37,6 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug load
 
 export GOPATH=/Users/danielhilton/Code/go
+export NVM_DIR=/Users/danielhilton/.nvm
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
