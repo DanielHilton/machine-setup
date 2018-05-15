@@ -3,6 +3,13 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="af-magic"
 
+function sshaws(){
+  ssh -i ~/pem-keys/$1.pem ubuntu@$2 
+}
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs host)
+
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
@@ -66,5 +73,15 @@ source $ZSH/oh-my-zsh.sh
 
 alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
+. ~/.oh-my-zsh/plugins/z/z.sh
 
-GOPATH=/Users/danielhilton/go
+
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+
+zplug load
+
+GOPATH=/Users/danielhilton/Code/go
