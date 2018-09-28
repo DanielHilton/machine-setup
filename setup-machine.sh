@@ -51,20 +51,22 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 
 echo Making code folder in home dir
 mkdir ~/Code
-pushd ~/Code
 
 if [ -f repos.txt ]; then
 	echo Cloning repos in file
-	REPOS=$(cat repos.txt)
-	for repo in $REPOS ; do
+	REPODIR=`pwd`
+
+	pushd ~/Code
+	while IFS= read -r repo
+	do
 		git clone $repo
-	done
+	done < $REPODIR/repos.txt
+
+	popd
 else
 	echo No repos.txt file, skipping repo creation.
 	sleep 1
 fi
-
-popd
 
 echo Installing Alfred
 brew cask install alfred
@@ -89,6 +91,7 @@ brew cask install google-chrome
 
 echo installing sublime text 3
 brew cask install sublime-text
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 
 echo Installing Rider
 brew cask install rider
