@@ -49,6 +49,23 @@ ln -s .zshrc ~/.zshrc
 echo Installing powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
+echo Making code folder in home dir
+mkdir ~/Code
+pushd ~/Code
+
+if [ -f repos.txt ]; then
+	echo Cloning repos in file
+	REPOS=$(cat repos.txt)
+	for repo in $REPOS ; do
+		git clone $repo
+	done
+else
+	echo No repos.txt file, skipping repo creation.
+	sleep 1
+fi
+
+popd
+
 echo Installing Alfred
 brew cask install alfred
 
@@ -97,6 +114,9 @@ brew cask install slack
 echo Installing Docker + Kitematic
 brew cask install docker
 brew cask install kitematic
+
+echo Installing VMWare Fusion
+brew cask install vmware-fusion
 
 echo Installing Adobe Creative Cloud
 brew cask install adobe-creative-cloud
