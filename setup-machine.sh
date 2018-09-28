@@ -100,6 +100,10 @@ brew install node@8
 npm i -g npm
 npm i -g nvm
 
+echo Installing GoLang
+mkdir -p ~/Code/go/bin
+brew install go
+
 echo Installing Chrome...
 brew cask install google-chrome
 
