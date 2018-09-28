@@ -37,7 +37,7 @@ brew cask install hyper
 
 echo Using repo hyper config
 rm -f ~/.hyper.js
-cp .hyper.js ~
+ln -s .hyper.js ~/.hyper.js
 
 echo Installing zsh
 brew install zsh
@@ -52,6 +52,16 @@ ln -s .zshrc ~/.zshrc
 
 echo Installing powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+echo Enabling syntax highlighting in vim
+mkdir -p ~/.vim/colors
+curl https://raw.githubusercontent.com/erichdongubler/vim-sublime-monokai/master/colors/sublimemonokai.vim --output sublimemonokai.vim
+mv sublimemonokai.vim ~/.vim/colors
+
+cat > ~/.vimrc << EOL
+syntax on
+colorscheme sublimemonokai
+EOL
 
 echo Making code folder in home dir
 mkdir ~/Code
