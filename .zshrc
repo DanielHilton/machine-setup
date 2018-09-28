@@ -1,9 +1,6 @@
 export TERM="xterm-256color"
-export NVM_DIR=/Users/danielhilton/.nvm
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-#ZSH_THEME="af-magic"
 
 function sshaws(){
   ssh -i ~/pem-keys/$1.pem ubuntu@$2 
@@ -38,12 +35,15 @@ POWERLEVEL9K_HOST_FOREGROUND="249"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs host)
 
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git,
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -58,19 +58,12 @@ alias startgirls="docker start fear azusa miku suiseiseki"
 . ~/.oh-my-zsh/plugins/z/z.sh
 alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2018/AMT/application.xml"
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-
-zplug load
-
 export GOPATH=/Users/danielhilton/Code/go
 export GOBIN=$GOPATH/bin
 
 export NVM_DIR=/Users/danielhilton/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:$GOBIN:/Users/danielhilton/cloudkat:/Users/danielhilton/sonar-scanner/bin
 
@@ -79,3 +72,4 @@ export QUOTINGLOCUST_RUN_LOCALLY=true
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
