@@ -35,6 +35,10 @@ echo Installing hyper...
 brew update
 brew cask install hyper
 
+echo Using repo hyper config
+rm -f ~/.hyper.js
+cp .hyper.js ~
+
 echo Installing zsh
 brew install zsh
 brew install zsh-syntax-highlighting
@@ -73,7 +77,7 @@ brew cask install alfred
 
 echo Installing nerd fonts...
 brew tap caskroom/fonts
-brew install font-firacode-nerd-font-mono
+brew cask install font-firacode-nerd-font-mono
 
 echo Installing AppCleaner
 brew cask install appcleaner
@@ -123,3 +127,5 @@ brew cask install vmware-fusion
 
 echo Installing Adobe Creative Cloud
 brew cask install adobe-creative-cloud
+
+echo Done!
