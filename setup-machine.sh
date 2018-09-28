@@ -115,6 +115,9 @@ brew cask install dotnet-sdk
 echo Installing GitKraken
 brew cask install gitkraken
 
+echo Installing GPG Suite
+brew cask install gpg-suite
+
 echo Installing Slack
 brew cask install slack
 
@@ -122,8 +125,17 @@ echo Installing Docker + Kitematic
 brew cask install docker
 brew cask install kitematic
 
+echo Installing Postman
+brew cask install postman
+
+echo Installing Spotify
+brew cask install spotify
+
 echo Installing VMWare Fusion
 brew cask install vmware-fusion
+
+echo Installing VNC Viewer
+brew cask install vnc-viewer
 
 echo Installing Adobe Creative Cloud
 brew cask install adobe-creative-cloud
