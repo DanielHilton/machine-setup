@@ -43,13 +43,6 @@ echo Installing zsh
 brew install zsh
 brew install zsh-syntax-highlighting
 
-echo Installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-Echo Copying over custom zshrc
-rm ~/.zshrc
-ln -s .zshrc ~/.zshrc
-
 echo Installing powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
@@ -153,5 +146,15 @@ brew cask install vnc-viewer
 
 echo Installing Adobe Creative Cloud
 brew cask install adobe-creative-cloud
+
+echo Installing oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
+  echo "Could not install Oh My Zsh" >/dev/stderr
+  exit 1
+}
+
+echo Copying over custom zshrc
+rm ~/.zshrc
+ln -s .zshrc ~/.zshrc
 
 echo Done!

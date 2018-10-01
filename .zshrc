@@ -46,6 +46,8 @@ plugins=(
   z
 )
 
+source ~/.secretstuff
+
 source $ZSH/oh-my-zsh.sh
 
 alias resetgoland="rm ~/Library/Preferences/GoLand2018.1/eval/*.key"
