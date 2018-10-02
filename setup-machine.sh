@@ -107,6 +107,9 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 echo Installing Rider
 brew cask install rider
 
+echo Installing Mono
+brew install mono
+
 echo Installing WebStorm
 brew cask install webstorm
 
