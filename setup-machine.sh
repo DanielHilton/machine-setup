@@ -85,6 +85,10 @@ brew cask install font-firacode-nerd-font-mono
 echo Installing AppCleaner
 brew cask install appcleaner
 
+echo Installing Tunneblick OpenVPN Client...
+brew install openvpn
+brew cask install tunnelblick
+
 echo Installing The Unarchiver
 brew cask install the-unarchiver
 
