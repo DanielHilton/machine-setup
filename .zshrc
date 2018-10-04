@@ -75,3 +75,4 @@ export QUOTINGLOCUST_RUN_LOCALLY=true
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/usr/local/opt/node@8/bin:$PATH"
