@@ -6,6 +6,14 @@ function sshaws(){
   ssh -i ~/pem-keys/$1.pem ubuntu@$2 
 }
 
+function pushconfig(){
+  pushd $HOME/Code/machine-setup
+  git add .
+  git commit
+  git push
+  popd
+}
+
 DEFAULT_COLOR="125"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_DIR_HOME_BACKGROUND="125"
@@ -59,15 +67,15 @@ alias dps="docker ps"
 alias startgirls="docker start fear azusa miku suiseiseki"
 . ~/.oh-my-zsh/plugins/z/z.sh
 alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2018/AMT/application.xml"
-
-export GOPATH=/Users/danielhilton/Code/go
+alias convert2ssh="git remote set-url origin `git remote get-url origin | sed s#https://#ssh://git@#g`"
+export GOPATH=$HOME/Code/go
 export GOBIN=$GOPATH/bin
 
-export NVM_DIR=/Users/danielhilton/.nvm
+export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$GOBIN:/Users/danielhilton/cloudkat:/Users/danielhilton/sonar-scanner/bin
+export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export QUOTINGLOCUST_RUN_LOCALLY=true
