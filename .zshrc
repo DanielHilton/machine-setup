@@ -67,7 +67,11 @@ alias dps="docker ps"
 alias startgirls="docker start fear azusa miku suiseiseki"
 . ~/.oh-my-zsh/plugins/z/z.sh
 alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2018/AMT/application.xml"
-alias convert2ssh="git remote set-url origin `git remote get-url origin | sed s#https://#ssh://git@#g`"
+
+function convert2ssh() {
+  git remote set-url origin `git remote get-url origin | sed s#https://#ssh://git@#g`
+}
+
 export GOPATH=$HOME/Code/go
 export GOBIN=$GOPATH/bin
 
