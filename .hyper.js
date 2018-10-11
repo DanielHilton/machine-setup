@@ -9,10 +9,10 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 13,
 
     // font family with optional fallbacks
-    fontFamily: '"FuraCode Nerd Font Mono", "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"OperatorMono Nerd Font", "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: '',
