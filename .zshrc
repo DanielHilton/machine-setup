@@ -14,6 +14,14 @@ function pushconfig(){
   popd
 }
 
+function sshaws2(){
+  env=`echo $1 | cut -d . -f3`
+  instances=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$1.*"`
+  sshaws ${env} `echo $instances | jq '.Reservations[].Instances[].NetworkInterfaces[].Association.PublicIp' | tr -d '"'`
+  unset env
+  unset instances
+}
+
 DEFAULT_COLOR="125"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_DIR_HOME_BACKGROUND="125"
