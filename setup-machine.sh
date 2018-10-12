@@ -1,43 +1,35 @@
 #!/bin/bash
 
-# if [ -z $1 ] || [ -z $2 ] ; then
-#   echo "Usage ./setup-machine.sh <name> <email>"
-#   exit 1
-# fi
+if [ -z $1 ] || [ -z $2 ] ; then
+  echo "Usage ./setup-machine.sh <name> <email>"
+  exit 1
+fi
 
 read -p Ready?
 
 echo Getting sudo over and done with
 sudo echo
 
-# NAME=$1
-# EMAIL=$2
+NAME=$1
+EMAIL=$2
 
-# echo Changing git config
-# rm ~/.gitconfig
-# cat > ~/.gitconfig << EOL
-# [user]
-# name = ${NAME}
-# email = ${EMAIL}
-# EOL
+echo Changing git config
+rm ~/.gitconfig
+cat > ~/.gitconfig << EOL
+[user]
+name = ${NAME}
+email = ${EMAIL}
+EOL
 
 echo Installing Homebrew...
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# echo Generating SSH Key
-# ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
-# pbcopy < ~/.ssh/id_rsa.pub
+echo Generating SSH Key
+ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+pbcopy < ~/.ssh/id_rsa.pub
 
-# echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
-# read -p "Press enter to continue"
-
-echo Installing hyper...
-brew update
-brew cask install hyper
-
-echo Using repo hyper config
-rm -f ~/.hyper.js
-ln -s .hyper.js ~/.hyper.js
+echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
+read -p "Press enter to continue"
 
 echo Installing zsh
 brew install zsh
@@ -53,7 +45,7 @@ mv sublimemonokai.vim ~/.vim/colors
 
 cat > ~/.vimrc << EOL
 syntax on
-colorscheme sublimemonokai
+colorscheme sublimemonokaie
 EOL
 
 echo Making code folder in home dir
@@ -74,6 +66,14 @@ else
 	echo No repos.txt file, skipping repo creation.
 	sleep 1
 fi
+
+echo Installing hyper...
+brew update
+brew cask install hyper
+
+echo Using repo hyper config
+mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
+ln -s ${PWD}/.hyper.js ~/.hyper.js
 
 echo Installing Alfred
 brew cask install alfred
@@ -100,31 +100,30 @@ npm i -g nvm
 echo Installing GoLang
 mkdir -p ~/Code/go/bin
 brew install go
-#
-# echo Installing Chrome...
-# brew cask install google-chrome
+
+echo Installing Chrome...
+brew cask install google-chrome
 
 echo installing sublime text 3
 brew cask install sublime-text
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-#
-# echo Installing Rider
-# brew cask install rider
+
+echo Installing Rider
+brew cask install rider
 
 echo Installing Mono
 brew install mono
-#
-# echo Installing WebStorm
-# brew cask install webstorm
-#
-# echo Installing Microsoft Office
-# brew cask install microsoft-office
+
+echo Installing WebStorm
+brew cask install webstorm
+
+echo Installing Microsoft Office
+brew cask install microsoft-office
 
 echo installing GoLand
 brew cask install goland
 
-# echo Installing .NET Core SDK
-# brew cask install dotnet-sdk
+echo Installing .NET Core SDK
+brew cask install dotnet-sdk
 
 echo Installing GitKraken
 brew cask install gitkraken
@@ -132,36 +131,39 @@ brew cask install gitkraken
 echo Installing GPG Suite
 brew cask install gpg-suite
 
-# echo Installing Slack
-# brew cask install slack
+echo Installing Slack
+brew cask install slack
 
-# echo Installing Docker + Kitematic
-# brew cask install docker
-# brew cask install kitematic
+echo Installing Docker + Kitematic
+brew cask install docker
+brew cask install kitematic
 
 echo Installing Postman
 brew cask install postman
 
-# echo Installing Spotify
-# brew cask install spotify
-#
-# echo Installing VMWare Fusion
-# brew cask install vmware-fusion
+echo Installing Spotify
+brew cask install spotify
+
+echo Installing VMWare Fusion
+brew cask install vmware-fusion
 
 echo Installing VNC Viewer
 brew cask install vnc-viewer
-#
-# echo Installing Adobe Creative Cloud
-# brew cask install adobe-creative-cloud
+
+echo Installing Robo 3T
+brew cask install robo-3t
+
+echo Installing Adobe Creative Cloud
+brew cask install adobe-creative-cloud
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
-  echo "Could not install Oh My Zsh" >/dev/stderr
+  echo "Could not install Oh My Zsh" > /dev/stderr
   exit 1
 }
 
 echo Copying over custom zshrc
-rm ~/.zshrc
-ln -s .zshrc ~/.zshrc
+mv ~/.zshrc ~/.zshrc_original # Keep original
+ln -s ${PWD}/.zshrc ~/.zshrc
 
 echo Done!
