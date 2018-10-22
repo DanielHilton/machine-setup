@@ -15,10 +15,17 @@ function pushconfig(){
 }
 
 function sshaws2(){
-  env=`echo $1 | cut -d . -f3`
+  if [ ! -z $2 ]; then
+    AWS_PROFILE=$2
+    env=$2
+  else
+    env=`echo $1 | cut -d . -f3`
+  fi
   instances=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$1.*"`
   sshaws ${env} `echo $instances | jq '.Reservations[].Instances[].NetworkInterfaces[].Association.PublicIp' | tr -d '"'`
   unset env
+  unset AWS_PROFILE
+  unset accountSwitch
   unset instances
 }
 
@@ -66,7 +73,8 @@ source ~/.secretstuff
 
 source $ZSH/oh-my-zsh.sh
 
-alias resetgoland="rm ~/Library/Preferences/GoLand2018.1/eval/*.key"
+alias resetgoland="rm ~/Library/Preferences/GoLand*/eval/*.key"
+alias resetpycharm="rm ~/Library/Preferences/PyCharm*/eval/*.key"
 alias fucking=sudo
 alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
@@ -91,8 +99,6 @@ export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export QUOTINGLOCUST_RUN_LOCALLY=true
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/opt/node@8/bin:$PATH"
