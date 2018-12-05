@@ -32,7 +32,7 @@ module.exports = {
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: false,
 
-    // color of the text
+      // color of the text
     foregroundColor: '#fff',
 
     // terminal background color

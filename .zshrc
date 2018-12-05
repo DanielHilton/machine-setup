@@ -2,6 +2,9 @@ export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+fpath=(~/.zsh/completions $fpath) 
+autoload -U compinit && compinit
+
 function sshaws(){
   ssh -i ~/pem-keys/$1.pem ubuntu@$2 
 }
@@ -12,21 +15,6 @@ function pushconfig(){
   git commit
   git push
   popd
-}
-
-function sshaws2(){
-  if [ ! -z $2 ]; then
-    AWS_PROFILE=$2
-    env=$2
-  else
-    env=`echo $1 | cut -d . -f3`
-  fi
-  instances=`aws ec2 describe-instances --filters "Name=tag:Name,Values=$1.*"`
-  sshaws ${env} `echo $instances | jq '.Reservations[].Instances[].NetworkInterfaces[].Association.PublicIp' | tr -d '"'`
-  unset env
-  unset AWS_PROFILE
-  unset accountSwitch
-  unset instances
 }
 
 DEFAULT_COLOR="125"
@@ -80,12 +68,13 @@ alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
 alias code="cd ~/Code"
 alias dps="docker ps"
-alias startgirls="docker start fear azusa miku suiseiseki"
+alias startgirls="say -v Kyoko はじめおか; docker start azusa tsumugi yui mio ritsu"
 . ~/.oh-my-zsh/plugins/z/z.sh
-alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2018/AMT/application.xml"
-
+alias editlightroomlicense="sudo vim /Library/Application Support/Adobe/Adobe Lightroom Classic CC NGL/AMT/application.xml"
+alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2019/AMT/application.xml"
+alias git=hub
 function convert2ssh() {
-  git remote set-url origin `git remote get-url origin | sed s#https://#ssh://git@#g`
+  git remote set-url $1 `git remote get-url $1 | sed s#https://#ssh://git@#g`
 }
 
 export GOPATH=$HOME/Code/go
@@ -102,3 +91,5 @@ export QUOTINGLOCUST_RUN_LOCALLY=true
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/opt/node@8/bin:$PATH"
+
+toilet -f mono9 -w 150 NHKにようこそ！| lolcat

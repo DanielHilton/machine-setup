@@ -110,6 +110,12 @@ brew cask install sublime-text
 echo Installing Rider
 brew cask install rider
 
+echo Installing Python
+brew install python
+
+echo Installing PyCharm
+brew cask install pycharm
+
 echo Installing Mono
 brew install mono
 
