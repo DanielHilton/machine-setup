@@ -61,6 +61,14 @@ source ~/.secretstuff
 
 source $ZSH/oh-my-zsh.sh
 
+function getvpcinfo() {
+    CIDR=$(aws ec2 describe-vpcs | jq --arg VPC_ID "${1}" '.Vpcs[] | select(.VpcId == $VPC_ID) | .CidrBlock' | tr -d '"')
+    NAME=$(aws ec2 describe-vpcs | jq --arg VPC_ID "${1}" '.Vpcs[] | select(.VpcId == $VPC_ID) | .Tags[] | select(.Key == "Name") | .Value' | tr -d '"')
+    echo VPC Name: $NAME
+    echo VPC Id: $1
+    echo VPC CIDR Block: $CIDR
+}
+
 alias resetgoland="rm ~/Library/Preferences/GoLand*/eval/*.key"
 alias resetpycharm="rm ~/Library/Preferences/PyCharm*/eval/*.key"
 alias fucking=sudo
@@ -93,3 +101,4 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 toilet -f mono9 -w 150 NHKにようこそ！| lolcat
+
