@@ -9,13 +9,13 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 12,
 
     // font family with optional fallbacks
     fontFamily: '"OperatorMono Nerd Font", "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
-    fontWeight: '',
+    fontWeight: 'normal',
 
     // font weight for bold characters: 'normal' or 'bold'
     fontWeightBold: 'bold',
@@ -32,6 +32,7 @@ module.exports = {
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: false,
 
+    lineHeight: 1,
       // color of the text
     foregroundColor: '#fff',
 
@@ -131,7 +132,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-search", "hyper-pane", "hyper-monokai"],
+  plugins: ["hyper-search", "hyper-pane", "hyper-monokai", "hyper-broadcast"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

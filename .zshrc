@@ -57,11 +57,13 @@ plugins=(
   z
 )
 
+source /usr/local/Cellar/awscli/1.16.20/libexec/bin/aws_zsh_completer.sh
+
 source ~/.secretstuff
 
 source $ZSH/oh-my-zsh.sh
 
-function getvpcinfo() {
+function getvpcinfobyid() {
     CIDR=$(aws ec2 describe-vpcs | jq --arg VPC_ID "${1}" '.Vpcs[] | select(.VpcId == $VPC_ID) | .CidrBlock' | tr -d '"')
     NAME=$(aws ec2 describe-vpcs | jq --arg VPC_ID "${1}" '.Vpcs[] | select(.VpcId == $VPC_ID) | .Tags[] | select(.Key == "Name") | .Value' | tr -d '"')
     echo VPC Name: $NAME
@@ -69,6 +71,19 @@ function getvpcinfo() {
     echo VPC CIDR Block: $CIDR
 }
 
+function getvpcinfobycidr() {
+    ID=$(aws ec2 describe-vpcs | jq --arg CIDR "${1}" '.Vpcs[] | select(.CidrBlock == $CIDR) | .VpcId' | tr -d '"')
+    NAME=$(aws ec2 describe-vpcs | jq --arg CIDR "${1}" '.Vpcs[] | select(.CidrBlock == $CIDR) | .Tags[] | select(.Key == "Name") | .Value' | tr -d '"')
+    echo VPC Name: $NAME
+    echo VPC Id: $ID
+    echo VPC CIDR Block: $1
+}
+
+alias tuturu='toilet -f mono9 -w 150 トウットウル〜！ | lolcat; (ffplay -nodisp -autoexit ~/Downloads/tuturu_1.mp3 2> /dev/null &)'
+alias bit='toilet -f mono9 -w 150 BITCONNECT! | lolcat; (ffplay -nodisp -autoexit ~/Downloads/bitconneeeeect.mp3 2> /dev/null &)'
+alias nonono='toilet -f mono9 -w 150 HMM NONONO! | lolcat; (ffplay -nodisp -autoexit ~/Downloads/hmm-hmm-no-no-no.mp3 2> /dev/null &)'
+
+alias gitgraph='git log --graph --oneline'
 alias resetgoland="rm ~/Library/Preferences/GoLand*/eval/*.key"
 alias resetpycharm="rm ~/Library/Preferences/PyCharm*/eval/*.key"
 alias fucking=sudo
