@@ -53,7 +53,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git,
   z
 )
 
@@ -78,7 +77,8 @@ function getvpcinfobycidr() {
     echo VPC Id: $ID
     echo VPC CIDR Block: $1
 }
-
+alias stopallcontainers='docker stop $(docker ps -q)'
+alias startallcontainers='docker start $(docker ps -qa)'
 alias tuturu='toilet -f mono9 -w 150 トウットウル〜！ | lolcat; (ffplay -nodisp -autoexit ~/Downloads/tuturu_1.mp3 2> /dev/null &)'
 alias bit='toilet -f mono9 -w 150 BITCONNECT! | lolcat; (ffplay -nodisp -autoexit ~/Downloads/bitconneeeeect.mp3 2> /dev/null &)'
 alias nonono='toilet -f mono9 -w 150 HMM NONONO! | lolcat; (ffplay -nodisp -autoexit ~/Downloads/hmm-hmm-no-no-no.mp3 2> /dev/null &)'
