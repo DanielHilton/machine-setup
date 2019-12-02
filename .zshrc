@@ -54,6 +54,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   z
+  thefuck
 )
 
 source /usr/local/Cellar/awscli/1.16.20/libexec/bin/aws_zsh_completer.sh
@@ -117,3 +118,4 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 toilet -f mono9 -w 150 NHKにようこそ！| lolcat
 
+eval $(thefuck --alias)
