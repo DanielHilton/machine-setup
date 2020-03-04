@@ -108,14 +108,15 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin
+export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin:/var/platform-tools:/Users/dhilton/Library/Android/sdk/tools/bin
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export QUOTINGLOCUST_RUN_LOCALLY=true
 
+export ANDROID_HOME=/Users/dhilton/Library/Android/sdk
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/opt/node@8/bin:$PATH"
-
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home"
 toilet -f mono9 -w 150 NHKにようこそ！| lolcat
 
 eval $(thefuck --alias)
