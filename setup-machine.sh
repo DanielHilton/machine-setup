@@ -45,7 +45,7 @@ mv sublimemonokai.vim ~/.vim/colors
 
 cat > ~/.vimrc << EOL
 syntax on
-colorscheme sublimemonokaie
+colorscheme sublimemonokai
 EOL
 
 echo Making code folder in home dir
