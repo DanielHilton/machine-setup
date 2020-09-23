@@ -57,7 +57,7 @@ plugins=(
   thefuck
 )
 
-source /usr/local/Cellar/awscli/1.16.20/libexec/bin/aws_zsh_completer.sh
+source /usr/local/Cellar/awscli/2.0.33/libexec/bin/aws_zsh_completer.sh
 
 source ~/.secretstuff
 
@@ -92,7 +92,7 @@ alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
 alias code="cd ~/Code"
 alias dps="docker ps"
-alias startgirls="say -v Kyoko はじめおか; docker start azusa tsumugi yui mio ritsu"
+alias startgirls="say -v Kyoko はじめおか; docker start azusa mio miku megumi kurisu"
 . ~/.oh-my-zsh/plugins/z/z.sh
 alias editlightroomlicense="sudo vim /Library/Application Support/Adobe/Adobe Lightroom Classic CC NGL/AMT/application.xml"
 alias editphotoshoplicense="sudo vim /Library/Application\ Support/Adobe/Adobe\ Photoshop\ CC\ 2019/AMT/application.xml"
@@ -108,15 +108,19 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin:/var/platform-tools:/Users/dhilton/Library/Android/sdk/tools/bin
+export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin:/var/platform-tools:/Users/dhilton/Library/Android/sdk/tools/bin:/usr/local/opt/openssl@1.1/bin
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export QUOTINGLOCUST_RUN_LOCALLY=true
 
 export ANDROID_HOME=/Users/dhilton/Library/Android/sdk
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/opt/node@8/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home"
-toilet -f mono9 -w 150 NHKにようこそ！| lolcat
+toilet -f mono9 -w 150 システムERROR| lolcat
+
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 eval $(thefuck --alias)
