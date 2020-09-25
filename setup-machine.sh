@@ -48,7 +48,7 @@ syntax on
 colorscheme sublimemonokai
 EOL
 
-echo Making code folder in home dir
+echo Making folder in home dir
 mkdir ~/Code
 
 if [ -f repos.txt ]; then
@@ -74,6 +74,12 @@ brew cask install hyper
 echo Using repo hyper config
 mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
 ln -s ${PWD}/.hyper.js ~/.hyper.js
+
+echo Installing Atom
+brew cask install atom
+
+echo Installing Insomnia
+brew cask install insomnia
 
 echo Installing Alfred
 brew cask install alfred
@@ -104,9 +110,6 @@ brew install go
 echo Installing Chrome...
 brew cask install google-chrome
 
-echo installing sublime text 3
-brew cask install sublime-text
-
 echo Installing Rider
 brew cask install rider
 
@@ -115,9 +118,6 @@ brew install python
 
 echo Installing PyCharm
 brew cask install pycharm
-
-echo Installing Mono
-brew install mono
 
 echo Installing WebStorm
 brew cask install webstorm
@@ -161,6 +161,18 @@ brew cask install robo-3t
 
 echo Installing Adobe Creative Cloud
 brew cask install adobe-creative-cloud
+
+echo Installing VS Code
+brew cask install visual-studio-code
+
+echo Installing Telegram
+brew cask install telegram
+
+echo Installing Draw.io
+brew cask install drawio
+
+echo Installing KeePassX
+brew cask install keepassx
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
