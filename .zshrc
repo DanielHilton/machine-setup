@@ -2,11 +2,11 @@ export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-fpath=(~/.zsh/completions $fpath) 
+fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 function sshaws(){
-  ssh -i ~/pem-keys/$1.pem ubuntu@$2 
+  ssh -i ~/pem-keys/$1.pem ubuntu@$2
 }
 
 function pushconfig(){
@@ -46,7 +46,7 @@ POWERLEVEL9K_HOST_FOREGROUND="249"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs host)
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -56,8 +56,6 @@ plugins=(
   z
   thefuck
 )
-
-source /usr/local/Cellar/awscli/2.0.33/libexec/bin/aws_zsh_completer.sh
 
 source ~/.secretstuff
 
