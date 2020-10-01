@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z $1 ] || [ -z $2 ] ; then
+if [[ -z $1 ]] || [[ -z $2 ]] ; then
   echo "Usage ./setup-machine.sh <name> <email>"
   exit 1
 fi
@@ -24,12 +24,12 @@ EOL
 echo Installing Homebrew...
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo Generating SSH Key
-ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
-pbcopy < ~/.ssh/id_rsa.pub
+# echo Generating SSH Key
+# ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+# pbcopy < ~/.ssh/id_rsa.pub
 
-echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
-read -p "Press enter to continue"
+# echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
+# read -p "Press enter to continue"
 
 echo Installing zsh
 brew install zsh
@@ -150,8 +150,8 @@ brew cask install postman
 echo Installing Spotify
 brew cask install spotify
 
-echo Installing VMWare Fusion
-brew cask install vmware-fusion
+# echo Installing VMWare Fusion
+# brew cask install vmware-fusion
 
 echo Installing VNC Viewer
 brew cask install vnc-viewer
