@@ -24,12 +24,12 @@ EOL
 echo Installing Homebrew...
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# echo Generating SSH Key
-# ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
-# pbcopy < ~/.ssh/id_rsa.pub
+echo Generating SSH Key
+ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
+pbcopy < ~/.ssh/id_rsa.pub
 
-# echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
-# read -p "Press enter to continue"
+echo "Your SSH key is now in your clipboard! Go to https://github.com to add it"
+read -p "Press enter to continue"
 
 echo Installing zsh
 brew install zsh
