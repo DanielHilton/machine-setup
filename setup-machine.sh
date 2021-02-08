@@ -99,7 +99,7 @@ echo Installing The Unarchiver
 brew cask install the-unarchiver
 
 echo installing node.js
-brew install node@8
+brew install node@12
 npm i -g npm
 npm i -g nvm
 
