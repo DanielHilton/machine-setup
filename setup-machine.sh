@@ -35,6 +35,12 @@ echo Installing zsh
 brew install zsh
 brew install zsh-syntax-highlighting
 
+echo Installing oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
+  echo "Could not install Oh My Zsh" > /dev/stderr
+  exit 1
+}
+
 brew install toilet
 brew install thefuck
 brew install lolcat
@@ -95,12 +101,6 @@ npm i -g nvm
 echo Installing GoLang
 mkdir -p ~/Code/go/bin
 brew install go
-
-echo Installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
-  echo "Could not install Oh My Zsh" > /dev/stderr
-  exit 1
-}
 
 echo Copying over custom zshrc
 mv ~/.zshrc ~/.zshrc_original # Keep original
