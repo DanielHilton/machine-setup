@@ -53,6 +53,7 @@ colorscheme sublimemonokai
 EOL
 
 brew install hub
+eval "$(hub alias -s)"
 
 echo Making folder in home dir
 mkdir ~/Code
