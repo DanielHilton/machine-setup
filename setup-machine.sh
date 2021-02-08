@@ -48,6 +48,8 @@ syntax on
 colorscheme sublimemonokai
 EOL
 
+brew install hub
+
 echo Making folder in home dir
 mkdir ~/Code
 
@@ -67,36 +69,18 @@ else
 	sleep 1
 fi
 
-echo Installing hyper...
 brew update
-brew cask install hyper
+brew tap caskroom/fonts
+
+while IFS= read -r cask
+  echo Installing $cask
+  brew install --cask $cask
+do
+done < $REPODIR/casks.txt
 
 echo Using repo hyper config
 mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
 ln -s ${PWD}/.hyper.js ~/.hyper.js
-
-echo Installing Atom
-brew cask install atom
-
-echo Installing Insomnia
-brew cask install insomnia
-
-echo Installing Alfred
-brew cask install alfred
-
-echo Installing nerd fonts...
-brew tap caskroom/fonts
-brew cask install font-firacode-nerd-font-mono
-
-echo Installing AppCleaner
-brew cask install appcleaner
-
-echo Installing Tunneblick OpenVPN Client...
-brew install openvpn
-brew cask install tunnelblick
-
-echo Installing The Unarchiver
-brew cask install the-unarchiver
 
 echo installing node.js
 brew install node@12
@@ -106,73 +90,6 @@ npm i -g nvm
 echo Installing GoLang
 mkdir -p ~/Code/go/bin
 brew install go
-
-echo Installing Chrome...
-brew cask install google-chrome
-
-echo Installing Rider
-brew cask install rider
-
-echo Installing Python
-brew install python
-
-echo Installing PyCharm
-brew cask install pycharm
-
-echo Installing WebStorm
-brew cask install webstorm
-
-echo Installing Microsoft Office
-brew cask install microsoft-office
-
-echo installing GoLand
-brew cask install goland
-
-echo Installing .NET Core SDK
-brew cask install dotnet-sdk
-
-echo Installing GitKraken
-brew cask install gitkraken
-
-echo Installing GPG Suite
-brew cask install gpg-suite
-
-echo Installing Slack
-brew cask install slack
-
-echo Installing Docker + Kitematic
-brew cask install docker
-brew cask install kitematic
-
-echo Installing Postman
-brew cask install postman
-
-echo Installing Spotify
-brew cask install spotify
-
-# echo Installing VMWare Fusion
-# brew cask install vmware-fusion
-
-echo Installing VNC Viewer
-brew cask install vnc-viewer
-
-echo Installing Robo 3T
-brew cask install robo-3t
-
-echo Installing Adobe Creative Cloud
-brew cask install adobe-creative-cloud
-
-echo Installing VS Code
-brew cask install visual-studio-code
-
-echo Installing Telegram
-brew cask install telegram
-
-echo Installing Draw.io
-brew cask install drawio
-
-echo Installing KeePassX
-brew cask install keepassx
 
 echo Installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
