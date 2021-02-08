@@ -35,6 +35,10 @@ echo Installing zsh
 brew install zsh
 brew install zsh-syntax-highlighting
 
+brew install toilet
+brew install thefuck
+brew install lolcat
+
 echo Installing powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
