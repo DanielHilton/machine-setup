@@ -2,8 +2,12 @@ export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-fpath=(~/.zsh/completions $fpath)
-autoload -U compinit && compinit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 function sshaws(){
   ssh -i ~/pem-keys/$1.pem ubuntu@$2
@@ -106,12 +110,12 @@ export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin:/var/platform-tools:/Users/dhilton/Library/Android/sdk/tools/bin:/usr/local/opt/openssl@1.1/bin
+export PATH=$PATH:$GOBIN:$HOME/sonar-scanner/bin:/var/platform-tools:/Users/$(whoami)/Library/Android/sdk/tools/bin:/usr/local/opt/openssl@1.1/bin
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 export QUOTINGLOCUST_RUN_LOCALLY=true
 
-export ANDROID_HOME=/Users/dhilton/Library/Android/sdk
+export ANDROID_HOME=/Users/$(whoami)/Library/Android/sdk
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:/usr/local/opt/node@8/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home"
