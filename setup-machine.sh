@@ -91,7 +91,8 @@ done < $REPODIR/casks.txt
 
 echo Using repo hyper config
 mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
-ln -s ${PWD}/.hyper.js ~/.hyper.js
+# ln -s ${PWD}/.hyper.js ~/.hyper.js
+cp .hyper.js ~
 
 echo installing node.js
 brew install node@12
@@ -104,6 +105,7 @@ brew install go
 
 echo Copying over custom zshrc
 mv ~/.zshrc ~/.zshrc_original # Keep original
-ln -s ${PWD}/.zshrc ~/.zshrc
+# ln -s ${PWD}/.zshrc ~/.zshrc
+cp .zshrc ~
 
 echo Done!
