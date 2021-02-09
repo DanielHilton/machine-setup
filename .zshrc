@@ -87,8 +87,8 @@ alias bit='toilet -f mono9 -w 150 BITCONNECT! | lolcat; (ffplay -nodisp -autoexi
 alias nonono='toilet -f mono9 -w 150 HMM NONONO! | lolcat; (ffplay -nodisp -autoexit ~/Downloads/hmm-hmm-no-no-no.mp3 2> /dev/null &)'
 
 alias gitgraph='git log --graph --oneline'
-alias resetgoland="rm ~/Library/Preferences/GoLand*/eval/*.key"
-alias resetpycharm="rm ~/Library/Preferences/PyCharm*/eval/*.key"
+alias resetgoland="rm ~/Library/Application\ Support/JetBrains/GoLand*/eval/*.key"
+alias resetpycharm="rm ~/Library/Application\ Support/JetBrains/PyCharm*/eval/*.key"
 alias fucking=sudo
 alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
