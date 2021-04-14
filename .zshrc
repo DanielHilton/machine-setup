@@ -94,6 +94,7 @@ alias editzshrc="vim ~/.zshrc"
 alias srczshrc="source ~/.zshrc"
 alias code="cd ~/Code"
 alias dps="docker ps"
+alias laws="aws --endpoint-url=http://localhost:4566"
 alias startgirls="say -v Kyoko はじめおか; docker start azusa mio miku megumi kurisu"
 . ~/.oh-my-zsh/plugins/z/z.sh
 alias editlightroomlicense="sudo vim /Library/Application Support/Adobe/Adobe Lightroom Classic CC NGL/AMT/application.xml"
