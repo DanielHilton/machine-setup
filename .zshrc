@@ -129,3 +129,5 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 eval $(thefuck --alias)
 export JAVA_HOME=Library/Java/JavaVirtualMachines/openjdk.jdk
 export DISABLE_MAGIC_FUNCTIONS=true
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
