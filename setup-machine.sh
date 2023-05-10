@@ -12,6 +12,7 @@ sudo echo
 
 NAME=$1
 EMAIL=$2
+REPODIR=`pwd`
 
 echo Changing git config
 rm ~/.gitconfig
@@ -22,7 +23,7 @@ email = ${EMAIL}
 EOL
 
 echo Installing Homebrew...
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo Generating SSH Key
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ''
@@ -66,7 +67,6 @@ mkdir ~/Code
 
 if [ -f repos.txt ]; then
 	echo Cloning repos in file
-	REPODIR=`pwd`
 
 	pushd ~/Code
 	while IFS= read -r repo
@@ -81,12 +81,12 @@ else
 fi
 
 brew update
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 
 while IFS= read -r cask
+do
   echo Installing $cask
   brew install --cask $cask
-do
 done < $REPODIR/casks.txt
 
 echo Using repo hyper config
@@ -95,7 +95,7 @@ mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
 cp .hyper.js ~
 
 echo installing node.js
-brew install node@12
+brew install node@14
 npm i -g npm
 npm i -g nvm
 

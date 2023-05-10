@@ -7,7 +7,6 @@ the-unarchiver
 appcleaner
 google-chrome
 rider
-pycharm
 webstorm
 microsoft-office
 goland
@@ -18,10 +17,5 @@ docker
 kitematic
 postman
 spotify
-vnc-viewer
-robo-3t
-adobe-creative-cloud
 visual-studio-code
 telegram
-drawio
-keepassx
