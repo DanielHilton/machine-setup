@@ -42,13 +42,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/ba
   exit 1
 }
 
-brew install toilet
-brew install thefuck
-brew install lolcat
-
-echo Installing powerlevel9k
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-
 echo Enabling syntax highlighting in vim
 mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/erichdongubler/vim-sublime-monokai/master/colors/sublimemonokai.vim --output sublimemonokai.vim
@@ -95,13 +88,19 @@ mv ~/.hyper.js ~/.hyper.js.original # Keep the old one
 cp .hyper.js ~
 
 echo installing node.js
-brew install node@14
+brew install node@20
 npm i -g npm
 npm i -g nvm
 
 echo Installing GoLang
 mkdir -p ~/Code/go/bin
 brew install go
+
+while IFS= read -r package
+do
+  echo Installing brew formula $package
+  brew install $package
+done < $REPODIR/formulae.txt
 
 echo Copying over custom zshrc
 mv ~/.zshrc ~/.zshrc_original # Keep original
