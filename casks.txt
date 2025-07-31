@@ -5,6 +5,7 @@ discord
 docker
 font-firacode-nerd-font-mono
 google-chrome
+google-cloud-sdk
 goland
 hyper
 insomnia
